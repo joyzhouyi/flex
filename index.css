@@ -1,0 +1,329 @@
+/* 设置默认样式 */
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  max-width: 540px;
+  min-width: 320px;
+  margin: 0 auto;
+  font: normal 14px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei",
+    STXihei, hei;
+  color: #000;
+  background: #f2f2f2;
+  /* 不出现水平滚动条 */
+  overflow-x: hidden;
+  /* 设置盒子阴影 */
+  -webkit-tap-highlight-color: transparent;
+  /* 测试用高度 */
+  height: 2000px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+
+  color: #222;
+}
+img {
+  display: block;
+}
+/* div {
+  box-sizing: border-box;
+} */
+
+/* 顶部搜索 部分- */
+.search-index {
+  height: 44px;
+  width: 100%;
+  /* 固定定位与父级没有关系，它以屏幕为准 */
+  position: fixed;
+  top: 0;
+
+  /* background-color: pink; */
+  min-width: 320px;
+  max-width: 540px;
+  /* 因为 定位设为 fixed 故 margin: 0 auto 无效（无法让其居中） */
+  /* margin: 0 auto; */
+  /* 通过left:50% （定位边界是屏幕）和 transform: translateX(-50%);使得该盒子居中 */
+  left: 50%;
+  /* -webkit-transform: translateX(-50%);兼容老浏览器 */
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  display: flex;
+  background-color: #f6f6f6;
+  border-bottom: 1px solid #ccc;
+}
+.search {
+  flex: 1;
+  height: 26px;
+  border: #ccc 1px solid;
+  margin: 6px 10px;
+  /* 因为.search::before 脱离文档流故设置了一个padding-left :20px; */
+  padding-left: 25px;
+  /* 因为.search::before  定位为 absolute 父级应该设置为  position: relative; */
+  position: relative;
+  font-size: 15px;
+  line-height: 26px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
+}
+/* .search::before在search盒子内的最前面添加 */
+.search::before {
+  content: "";
+  /* display: block; */
+  /* 加了绝对定位的就有display:block; */
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 15px;
+  height: 15px;
+  background: url(pic/搜索.png);
+  text-align: center;
+  /* 改了绝对定位就不用margin 改用top left */
+  /* margin: 5px; */
+}
+.user {
+  height: 44px;
+  width: 44px;
+  text-align: center;
+  text-decoration: none; /* background-color: purple; */
+  color: rgb(49, 89, 218);
+}
+
+.user::before {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 25px;
+  background: url(pic/用户.png);
+  /* margin: 1px auto -2px;该盒子下面的内容向上移动2px */
+  margin: 1px auto -2px;
+}
+/* 焦点图 部分*/
+.focus {
+  padding-top: 44px;
+}
+.focus img {
+  width: 100%;
+}
+/* 局部导航栏 */
+.local-nav {
+  height: 64px;
+  margin: 3px 4px;
+  border-radius: 8px;
+  background-color: #fff;
+  display: flex;
+}
+.local-nav li {
+  flex: 1;
+}
+.local-nav a {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+/* 局部导航栏中的单个盒子设置 */
+/* .local-nav-icon {
+  width: 32px;
+  height: 32px;
+  background-color: pink;
+  margin-top: 8px;
+  background: url(pic/景点玩乐.png);
+} */
+.local-nav li [class^="local-nav-icon"] {
+  width: 32px;
+  height: 32px;
+  /* background-color: pink; */
+  margin-top: 8px;
+  background: url(pic/玩乐.png);
+}
+.local-nav li .local-nav-icon-2 {
+  background: url(pic/山.png);
+}
+.local-nav li .local-nav-icon-3 {
+  background: url(pic/美食.png);
+}
+.local-nav li .local-nav-icon-4 {
+  background: url(pic/一日游.png);
+}
+.local-nav li .local-nav-icon-5 {
+  background: url(pic/攻略.png);
+}
+/* 主导航栏部分 */
+
+nav {
+  border-radius: 8px;
+  margin: 0 4px 3px;
+  /* 通过设置 overflow: hidden; 使得子盒子溢出部分不显示 。 使 border-radius: 8px;有效果*/
+  overflow: hidden;
+}
+nav .nav-common {
+  height: 88px;
+  background-color: pink;
+  display: flex;
+}
+.nav-common:nth-child(2) {
+  margin: 3px 0;
+}
+.nav-items {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+/* 为前两个盒子添加右边框  -n+2 就是选择前两个*/
+.nav-items:nth-child(-n + 2) {
+  border-right: 1px solid #fff;
+}
+.nav-items a {
+  flex: 1;
+  line-height: 44px;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  /* 设置字的阴影 */
+  text-shadow: 1px 1px rgb(0, 0, 0, 0.2);
+}
+
+.nav-items a:nth-child(1) {
+  border-bottom: 1px solid #fff;
+}
+/* 除去主导航栏部分 三个盒子中第一个小盒子的边框 */
+.nav-items:nth-child(1) a {
+  border: 0;
+}
+.nav-items:nth-child(1) a:nth-child(2) img {
+  height: 42px;
+}
+
+.nav-common:nth-child(1) {
+  background: -webkit-linear-gradient(left, #fa5a55, #fa9940);
+}
+.nav-common:nth-child(2) {
+  background-image: linear-gradient(93deg, #003dcc, #1f65dd, #228bee, #09b3ff);
+}
+.nav-common:nth-child(3) {
+  background-image: linear-gradient(91deg, #095d0a, #0f8024, #13a53d, #15cb57);
+}
+.subnav-entry {
+  border-radius: 8px;
+  background-color: #fff;
+  margin: 0 4px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.subnav-entry li {
+  /* 子盒子可以写 flex: 20%; */
+  flex: 20%;
+}
+.subnav-entry a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subnav-entry li [class^="subnav-entry-icon"] {
+  width: 28px;
+  height: 28px;
+
+  margin-top: 4px;
+}
+.subnav-entry li .subnav-entry-icon-1 {
+  background: url(pic/wife.png);
+}
+.subnav-entry li .subnav-entry-icon-2 {
+  background: url(pic/保险.png);
+}
+.subnav-entry li .subnav-entry-icon-3 {
+  background: url(pic/外币兑换.png);
+}
+.subnav-entry li .subnav-entry-icon-4 {
+  background: url(pic/购物.png);
+}
+.subnav-entry li .subnav-entry-icon-5 {
+  background: url(pic/当地向导.png);
+}
+.subnav-entry li .subnav-entry-icon-6 {
+  background: url(pic/自由行icon.png);
+}
+.subnav-entry li .subnav-entry-icon-7 {
+  background: url(pic/海外国家和地区.png);
+}
+.subnav-entry li .subnav-entry-icon-8 {
+  background: url(pic/礼物卡.png);
+}
+.subnav-entry li .subnav-entry-icon-9 {
+  background: url(pic/信用卡.png);
+}
+.subnav-entry li .subnav-entry-icon-10 {
+  background: url(pic/更多.png);
+}
+
+/* 销售模块 */
+.sales-box {
+  background-color: #fff;
+  margin: 4px;
+  border-top: 1px solid #bbb;
+}
+.sales-hd {
+  height: 44px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+.sales-hd h2 {
+  text-indent: -999px;
+  overflow: hidden;
+  position: relative;
+}
+.sales-hd h2::after {
+  content: "";
+  width: 79px;
+  height: 40px;
+  background-color: pink;
+  position: absolute;
+  top: 3px;
+  left: 10px;
+  background: url(pic/热门活动.png) no-repeat;
+  background-size: 79px auto;
+}
+.more {
+  position: absolute;
+  right: 5px;
+  top: 8px;
+  background: -webkit-linear-gradient(left, #ff506c, #ff6bc6);
+  border-radius: 8px;
+  padding: 3px 20px 3px 10px;
+  color: #fff;
+}
+/* 搞一个盒子用旋转 写一个箭头 */
+.more::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid #eee;
+  border-right: 2px solid #eee;
+  transform: rotate(45deg);
+}
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.row a {
+  flex: 1;
+  padding: 0;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 0;
+}
+.row a img {
+  width: 100%;
+  height: 150px;
+}

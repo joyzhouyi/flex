@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 400px;
+        height: 400px;
+        background-color: pink;
+        /* 给父级添加flex属性 */
+        display: flex;
+        /* 默认 主轴 是x轴 row  侧轴 就是column*/
+        /* 元素默认跟着主轴来排列的 */
+        /* flex-direction: row; */
+        /* 翻转 */
+        /* flex-direction: row-reverse; */
+        /* 主轴是x轴 column  侧轴就是row */
+        /* flex-direction: column; */
+        flex-direction: row;
+        /* justify-content 是设置 主轴 上子元素的排列方式 */
+        /* 默认是justify-content: flex-start;  */
+        /* 平均分配剩余空间 */
+        /* justify-content: space-around; */
+        /* 先两边贴边    再平均分配剩余空间 */
+        /* justify-content:space-between; */
+        justify-content: flex-start;
+        /* flex布局中默认 nowrap 不换行 */
+        /* flex-wrap: nowrap; */
+        flex-wrap: wrap;
+
+        /* 应为flex-content 只能控制 主轴 方向上的排列方式 ， */
+        /* 还需要一个对侧轴进行控制的属性  align-items: 但只适应 单行 */
+        /* align-items: stretch; 对子盒子进行拉伸 前提子盒子未设置高度*/
+        /* align-items: center; */
+
+        /* 因为有了换行，此时我们 侧轴 上控制子元素的对齐方式我们用align-content  但单行无效果*/
+        /* align-content: flex-start; */
+        align-content: space-between;
+
+        /* 把设置主轴方向和是否换行（换列）进行合写 */
+        flex-flow: row wrap;
+      }
+      div span {
+        width: 100px;
+        height: 100px;
+        background-color: purple;
+
+        text-align: center;
+        line-height: 100px;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+    </div>
+  </body>
+</html>
